@@ -1,6 +1,4 @@
-# 🎬 Magic Movies AI – Backend API
-**Magic Movies AI** is a platform that helps users bring their stories to life through a clean and simple interface. It allows users to create movies by breaking them down into scenes, sequences, and frames. Each frame serves as a visual prompt that can be sent to MidJourney to generate stunning AI images. Users can login, create projects, manage scenes and sequences, and explore visual storytelling with ease. Regenerating or varying images is just a click away, making the creative process fast and fun.
-
+# 🎬 POS – Backend API
 ---
 
 ## 🔧 Tech Stack
