@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pos-api
+    env_file:
+      - .env
+    environment:
+      - PORT=80
+    ports:
+      - '80:80'
+    depends_on:
+      - apiDB
+    volumes:
+      - ./config/:/app/config
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+    networks:
+      - pos-network
+
+  apiDB:
+    image: postgres:16.4-bookworm
+    restart: always
+    environment:
+      - POSTGRES_DB=${PG_DATABASE}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+    container_name: pos-db
+    volumes:
+      - pos-data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    networks:
+      - pos-network
+
+volumes:
+  pos-data: ~
+
+networks:
+  pos-network:
+    driver: bridge

@@ -1,0 +1,20 @@
+services:
+  apiDB_test:
+    image: postgres:16.4-bookworm
+    restart: always
+    env_file:
+      - .env.test
+    environment:
+      - POSTGRES_DB=${PG_TEST_DATABASE}
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+    container_name: pos-db-test
+    ports:
+      - '5433:5432'
+    networks:
+      - pos-test
+
+networks:
+  pos-test:
+    name: pos-test
+    driver: bridge
